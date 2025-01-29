@@ -1,0 +1,107 @@
+
+// CurrencyConverter.java
+package com.converter.currency;
+
+public class CurrencyConverter {
+    private static final double USD_TO_GHS = 5.5;
+    private static final double EUR_TO_GHS = 6.2;
+    private static final double JPY_TO_GHS = 0.05;
+
+    public static double usdToGhs(double amount) {
+        return amount * USD_TO_GHS;
+    }
+
+    public static double eurToGhs(double amount) {
+        return amount * EUR_TO_GHS;
+    }
+
+    public static double jpyToGhs(double amount) {
+        return amount * JPY_TO_GHS;
+    }
+
+    public static double ghsToUsd(double amount) {
+        return amount / USD_TO_GHS;
+    }
+
+    public static double ghsToEur(double amount) {
+        return amount / EUR_TO_GHS;
+    }
+
+    public static double ghsToJpy(double amount) {
+        return amount / JPY_TO_GHS;
+    }
+}
+
+
+// DistanceConverter.java
+package com.converter.distance;
+
+public class DistanceConverter {
+    private static final double METER_TO_KM = 0.001;
+    private static final double MILES_TO_KM = 1.60934;
+
+    public static double meterToKm(double amount) {
+        return amount * METER_TO_KM;
+    }
+
+    public static double kmToMeter(double amount) {
+        return amount / METER_TO_KM;
+    }
+
+    public static double milesToKm(double amount) {
+        return amount * MILES_TO_KM;
+    }
+
+    public static double kmToMiles(double amount) {
+        return amount / MILES_TO_KM;
+    }
+}
+
+// TimeConverter.java
+package com.converter.time;
+
+public class TimeConverter {
+    private static final double HOURS_TO_MINUTES = 60;
+    private static final double MINUTES_TO_SECONDS = 60;
+
+    public static double hoursToMinutes(double amount) {
+        return amount * HOURS_TO_MINUTES;
+    }
+
+    public static double minutesToHours(double amount) {
+        return amount / HOURS_TO_MINUTES;
+    }
+
+    public static double minutesToSeconds(double amount) {
+        return amount * MINUTES_TO_SECONDS;
+    }
+
+    public static double secondsToMinutes(double amount) {
+        return amount / MINUTES_TO_SECONDS;
+    }
+}
+
+
+// Main.java
+import com.converter.currency.CurrencyConverter;
+import com.converter.distance.DistanceConverter;
+import com.converter.time.TimeConverter;
+
+public class Main {
+    public static void main(String[] args) {
+        // Currency conversion
+        double usdAmount = 100;
+        double ghsAmount = CurrencyConverter.usdToGhs(usdAmount);
+        System.out.println(usdAmount + " USD is equal to " + ghsAmount + " GHS");
+
+        // Distance conversion
+        double meterAmount = 1000;
+        double kmAmount = DistanceConverter.meterToKm(meterAmount);
+        System.out.println(meterAmount + " meters is equal to " + kmAmount + " kilometers");
+
+        // Time conversion
+        double hoursAmount = 2;
+        double minutesAmount = TimeConverter.hoursToMinutes(hoursAmount);
+        System.out.println(hoursAmount + " hours is equal to " + minutesAmount + " minutes");
+    }
+}
