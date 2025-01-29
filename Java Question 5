@@ -1,0 +1,115 @@
+// Stack Interface
+public interface Stack<T> {
+    void push(T item) throws StackOverflowException; // Push an item onto the stack
+    T pop() throws StackUnderflowException;          // Pop an item from the stack
+    T peek() throws StackUnderflowException;         // Peek at the top item of the stack
+    boolean isEmpty();                               // Check if the stack is empty
+    boolean isFull();                                // Check if the stack is full
+}
+
+// Exception for Stack Overflow
+class StackOverflowException extends Exception {
+    public StackOverflowException(String message) {
+        super(message);
+    }
+}
+
+// Exception for Stack Underflow
+class StackUnderflowException extends Exception {
+    public StackUnderflowException(String message) {
+        super(message);
+    }
+}
+
+// Array-based Stack Implementation
+public class ArrayStack<T> implements Stack<T> {
+    private T[] stack;    // Array to hold stack elements
+    private int top;      // Index of the top element
+    private int capacity; // Maximum capacity of the stack
+
+    // Constructor
+    @SuppressWarnings("unchecked")
+    public ArrayStack(int capacity) {
+        this.capacity = capacity;
+        this.stack = (T[]) new Object[capacity]; // Initialize the array
+        this.top = -1;                           // Initialize the stack as empty
+    }
+
+    // Push an item onto the stack
+    @Override
+    public void push(T item) throws StackOverflowException {
+        if (isFull()) {
+            throw new StackOverflowException("Stack is full. Cannot push element: " + item);
+        }
+        stack[++top] = item;
+    }
+
+    // Pop an item from the stack
+    @Override
+    public T pop() throws StackUnderflowException {
+        if (isEmpty()) {
+            throw new StackUnderflowException("Stack is empty. Cannot pop element.");
+        }
+        T item = stack[top];
+        stack[top--] = null; // Avoid memory leak
+        return item;
+    }
+
+    // Peek at the top item of the stack
+    @Override
+    public T peek() throws StackUnderflowException {
+        if (isEmpty()) {
+            throw new StackUnderflowException("Stack is empty. Cannot peek element.");
+        }
+        return stack[top];
+    }
+
+    // Check if the stack is empty
+    @Override
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    // Check if the stack is full
+    @Override
+    public boolean isFull() {
+        return top == capacity - 1;
+    }
+}
+
+// Main Class to Test the Implementation
+public class Main {
+    public static void main(String[] args) {
+        try {
+            Stack<Integer> stack = new ArrayStack<>(5);
+
+            // Push elements
+            System.out.println("Pushing elements onto the stack...");
+            stack.push(10);
+            stack.push(20);
+            stack.push(30);
+            System.out.println("Top element after pushing: " + stack.peek()); // Should print 30
+
+            // Pop elements
+            System.out.println("Popping elements from the stack...");
+            System.out.println("Popped element: " + stack.pop()); // Should print 30
+            System.out.println("Popped element: " + stack.pop()); // Should print 20
+
+            // Check if empty
+            System.out.println("Is stack empty? " + stack.isEmpty()); // Should print false
+
+            // Push more elements
+            System.out.println("Pushing more elements onto the stack...");
+            stack.push(40);
+            stack.push(50);
+            stack.push(60);
+            System.out.println("Is stack full? " + stack.isFull()); // Should print true
+
+            // Attempt to push when stack is full
+            stack.push(70); // Should throw StackOverflowException
+
+        } catch (StackOverflowException | StackUnderflowException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+}

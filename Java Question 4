@@ -1,0 +1,132 @@
+
+
+class Employee {
+    String empName;
+    String empId;
+    String address;
+    String mailId;
+    String mobileNo;
+
+    public Employee(String empName, String empId, String address, String mailId, String mobileNo) {
+        this.empName = empName;
+        this.empId = empId;
+        this.address = address;
+        this.mailId = mailId;
+        this.mobileNo = mobileNo;
+    }
+}
+
+class Programmer extends Employee {
+    double basicPay;
+
+    public Programmer(String empName, String empId, String address, String mailId, String mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo);
+        this.basicPay = basicPay;
+    }
+
+    public void generatePaySlip() {
+        double da = 0.97 * basicPay;
+        double hra = 0.10 * basicPay;
+        double pf = 0.12 * basicPay;
+        double staffClubFund = 0.001 * basicPay;
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - (pf + staffClubFund);
+
+        System.out.println("Pay Slip for Programmer:");
+        System.out.println("Employee Name: " + empName);
+        System.out.println("Employee ID: " + empId);
+        System.out.println("Gross Salary: " + grossSalary);
+        System.out.println("Net Salary: " + netSalary);
+        System.out.println("------------------------------");
+    }
+}
+
+class AssistantProfessor extends Employee {
+    double basicPay;
+
+    public AssistantProfessor(String empName, String empId, String address, String mailId, String mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo);
+        this.basicPay = basicPay;
+    }
+
+    public void generatePaySlip() {
+        double da = 0.97 * basicPay;
+        double hra = 0.10 * basicPay;
+        double pf = 0.12 * basicPay;
+        double staffClubFund = 0.001 * basicPay;
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - (pf + staffClubFund);
+
+        System.out.println("Pay Slip for Assistant Professor:");
+        System.out.println("Employee Name: " + empName);
+        System.out.println("Employee ID: " + empId);
+        System.out.println("Gross Salary: " + grossSalary);
+        System.out.println("Net Salary: " + netSalary);
+        System.out.println("------------------------------");
+    }
+}
+
+class AssociateProfessor extends Employee {
+    double basicPay;
+
+    public AssociateProfessor(String empName, String empId, String address, String mailId, String mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo);
+        this.basicPay = basicPay;
+    }
+
+    public void generatePaySlip() {
+        double da = 0.97 * basicPay;
+        double hra = 0.10 * basicPay;
+        double pf = 0.12 * basicPay;
+        double staffClubFund = 0.001 * basicPay;
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - (pf + staffClubFund);
+
+        System.out.println("Pay Slip for Associate Professor:");
+        System.out.println("Employee Name: " + empName);
+        System.out.println("Employee ID: " + empId);
+        System.out.println("Gross Salary: " + grossSalary);
+        System.out.println("Net Salary: " + netSalary);
+        System.out.println("------------------------------");
+    }
+}
+
+class Professor extends Employee {
+    double basicPay;
+
+    public Professor(String empName, String empId, String address, String mailId, String mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo);
+        this.basicPay = basicPay;
+    }
+
+    public void generatePaySlip() {
+        double da = 0.97 * basicPay;
+        double hra = 0.10 * basicPay;
+        double pf = 0.12 * basicPay;
+        double staffClubFund = 0.001 * basicPay;
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - (pf + staffClubFund);
+
+        System.out.println("Pay Slip for Professor:");
+        System.out.println("Employee Name: " + empName);
+        System.out.println("Employee ID: " + empId);
+        System.out.println("Gross Salary: " + grossSalary);
+        System.out.println("Net Salary: " + netSalary);
+        System.out.println("------------------------------");
+    }
+}
+
+public class EmployeePaySlip {
+    public static void main(String[] args) {
+        Programmer programmer = new Programmer("John Doe", "P123", "123 Street", "john@example.com", "9876543210", 50000);
+        AssistantProfessor assistantProfessor = new AssistantProfessor("Jane Smith", "AP456", "456 Avenue", "jane@example.com", "8765432109", 60000);
+        AssociateProfessor associateProfessor = new AssociateProfessor("Alice Brown", "AAP789", "789 Road", "alice@example.com", "7654321098", 70000);
+        Professor professor = new Professor("Bob White", "PR101", "101 Blvd", "bob@example.com", "6543210987", 80000);
+
+        programmer.generatePaySlip();
+        assistantProfessor.generatePaySlip();
+        associateProfessor.generatePaySlip();
+        professor.generatePaySlip();
+    }
+}
+
